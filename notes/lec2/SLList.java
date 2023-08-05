@@ -12,34 +12,34 @@ public class SLList {
     }
      */
     /** When the IntNode class never uses the details of the SLList class, take the keyword "static". */
-    private IntNode sentinal; // The first item, if it exists, is at sentinal.next.
+    private IntNode sentinel; // The first item, if it exists, is at sentinel.next.
     private int size;
 
     /** Create an empty list. */
     public SLList() {
-        sentinal = new IntNode(6, null);
+        sentinel = new IntNode(6, null);
         size = 0;
     }
 
     public SLList(int x) {
-        sentinal = new IntNode(6, null);
+        sentinel = new IntNode(6, null);
         size = 1;
     }
 
     /** Adds x to the front of the list. */
     public void addFirst(int x) {
-        sentinal.next = new IntNode(x, sentinal.next);
+        sentinel.next = new IntNode(x, sentinel.next);
         size += 1;
     }
 
     /** Return the first item of the list. */
     public int getFirst() {
-        return sentinal.next.item;
+        return sentinel.next.item;
     }
 
     public void addLast(int x) {
         size += 1;
-        IntNode p = sentinal;
+        IntNode p = sentinel;
         while (p.next != null) {
             p = p.next;
         }

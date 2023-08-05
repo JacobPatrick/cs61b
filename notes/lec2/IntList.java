@@ -15,8 +15,23 @@ public class IntList {
         return 1 + this.rest.size();
     }
 
+    /** Return the size of the list using no recursion
+     * (instead with iterative method) */
+    public int iterativeSize() {
+        IntList p = this;
+        int totalSize = 0;
+        while (p != null) {
+            totalSize += 1;
+            p = p.rest;
+        }
+        return totalSize;
+    }
+
     /** Return the i th element of this IntList. */
     public int get(int i) {
-        return 1;
+        if (i == 0) {
+            return this.first;
+        }
+        return this.rest.get(i-1);
     }
 }
