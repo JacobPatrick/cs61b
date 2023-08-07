@@ -53,6 +53,7 @@ public class SLList {
     //     }
     //     return 1 + size(p.next);
     // }
+    
     /** Return the size of the list.(the public methods that speaks the language of the mortals) */
     public int size() {
         return size;
@@ -65,6 +66,5 @@ public class SLList {
         L.addFirst(3);
         L.addLast(12);
         System.out.println(L.getFirst());
-        System.out.println(L.size());
     }
 }

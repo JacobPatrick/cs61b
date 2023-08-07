@@ -8,5 +8,4 @@ public class DLIntNode {
         item = i;
         next = n;
     }
-    
 }

@@ -8,12 +8,14 @@ public class DLList {
     public DLList() {
         size = 0;
         sentinel = new DLIntNode(null, 6, null);
+        sentinel.prev = sentinel;
+        sentinel.next = sentinel;
     }
 
     public DLList(int x) {
         size = 1;
-        sentinel = new DLIntNode(first, 6, first);
         first = new DLIntNode(sentinel, x, sentinel);
+        sentinel = new DLIntNode(first, 6, first);
         last = first;
     }
 
@@ -32,6 +34,12 @@ public class DLList {
      * this mothods will come up with something we are unwilling to see. */
     public void removeFirst() {
         size -= 1;
+        if (size == 0) {
+            first = null;
+            last = null;
+            sentinel.prev = sentinel;
+            sentinel.next = sentinel;
+        }
         first = first.next;
         first.prev = sentinel;
         sentinel.next = first;
@@ -56,18 +64,27 @@ public class DLList {
      * this mothods will come up with something we are unwilling to see. */
     public void removeLast() {
         size -= 1;
+        if (size == 0) {  
+            first = null;
+            last = null;
+            sentinel.prev = sentinel;
+            sentinel.next = sentinel;
+        }
         last = last.prev;
         last.next = sentinel;
         sentinel.prev = last;
     }
 
     public static void main(String[] args) {
-        DLList L = new DLList(5);
-        // L.addFirst(6);
+        // DLList L = new DLList(8);
+        // L.addFirst(7);
         // L.addLast(9);
-        // L.removeLast();
-        // System.out.println(L.first.item);
-        // System.out.println(L.last.item);
+        DLList L = new DLList();
+        L.addFirst(7);
+        L.addLast(8);
+        L.removeLast();
+        System.out.println(L.first.item);
+        System.out.println(L.last.item);
         System.out.println(L.first.next);
     }
 }
