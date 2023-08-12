@@ -39,10 +39,11 @@ public class DLList {
             last = null;
             sentinel.prev = sentinel;
             sentinel.next = sentinel;
+        } else {
+            first = first.next;
+            first.prev = sentinel;
+            sentinel.next = first;
         }
-        first = first.next;
-        first.prev = sentinel;
-        sentinel.next = first;
     }
 
     public int getFirst() {
@@ -69,10 +70,11 @@ public class DLList {
             last = null;
             sentinel.prev = sentinel;
             sentinel.next = sentinel;
+        } else {
+            last = last.prev;
+            last.next = sentinel;
+            sentinel.prev = last;
         }
-        last = last.prev;
-        last.next = sentinel;
-        sentinel.prev = last;
     }
 
     public static void main(String[] args) {

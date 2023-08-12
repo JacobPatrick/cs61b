@@ -60,6 +60,7 @@ public class SLList {
         // return size(first);
     }
 
+
     public static void main(String[] args) {
         SLList L = new SLList(10);
         L.addFirst(6);
