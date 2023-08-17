@@ -110,6 +110,25 @@ public class Model extends Observable {
         boolean changed;
         changed = false;
 
+        // check merge -> move and merge -> update(the same time as "move and merge")
+        // Suppose that we face to north, and so is the direction of tilt.
+        if (side == Side.NORTH) {
+            // MOVE
+            // for (int c = 0; c < size(); c += 1) {
+            //     int cntNull = 0;
+            //     for (int r = size() - 1; r >= 0; r -= 1) {
+            //         if (tile(c, r) == null) {
+            //             cntNull += 1;
+            //         } else {
+            //             Board.move(c, r + cntNull, tile(c, r));
+            //         }
+            //     }
+            // }
+
+            // CHECK MERGE
+
+        }
+
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
@@ -137,7 +156,14 @@ public class Model extends Observable {
      *  Empty spaces are stored as null.
      * */
     public static boolean emptySpaceExists(Board b) {
-        // TODO: Fill in this function.
+        int size = b.size();
+        for (int i = 0; i < size; i = i + 1) {
+            for (int j = 0; j < size; j = j + 1) {
+                if (b.tile(i, j) == null) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -147,7 +173,14 @@ public class Model extends Observable {
      * given a Tile object t, we get its value with t.value().
      */
     public static boolean maxTileExists(Board b) {
-        // TODO: Fill in this function.
+        int size = b.size();
+        for (int i = 0; i < size; i = i + 1) {
+            for (int j = 0; j < size; j = j + 1) {
+                if (b.tile(i, j).value == MAX_PIECE) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -158,7 +191,22 @@ public class Model extends Observable {
      * 2. There are two adjacent tiles with the same value.
      */
     public static boolean atLeastOneMoveExists(Board b) {
-        // TODO: Fill in this function.
+        int size = b.size();
+        boolean atLeastOneMergeExists = false;
+        for (int i = 0; i < size; i = i + 1) {
+            for (int j = 0; j < size; j = j + 1) {
+                int currentTileValue = b.tile(i, j).value;
+                if (j + 1 < size && currentTileValue == b.tile(i, j + 1)) {
+                    atLeastOneMergeExists = true;
+                }
+                if (i + 1 < size && currentTileValue == b.tile(i + 1, j)) {
+                    atLeastOneMergeExists = true;
+                }
+            }
+        }
+        if (emptySpaceExists(b) || atLeastOneMergeExists) {
+            return true;
+        }
         return false;
     }
 

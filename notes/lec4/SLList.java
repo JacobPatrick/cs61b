@@ -14,6 +14,7 @@ public class SLList<T> implements List61b<T>{
 
     public SLList() {
         sentinel = new Node<>(null, null);
+        size = 0;
     }
 
     public SLList(T data) {

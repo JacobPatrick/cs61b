@@ -4,7 +4,7 @@ public class AList {
 
     /** Create an empty AList. */
     public AList() {
-        items = new int[100]; //Just for an example.
+        items = new int[100]; //Just for example.
         size = 0;
     }
 
